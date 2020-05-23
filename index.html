@@ -2,9 +2,11 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <title>Library</title>
+  <title>Tic-Tac-Toe</title>
   <meta name="description" content="THLB">
   <meta name="author" content="THLB">
 
@@ -13,8 +15,22 @@
 </head>
 
 <body>
-
-   <p>Console Application</p> 
+   <div class="container">
+    <h1>Tic-Tac-Toe</h1>
+    <div class="play-area">
+      <div id="block_0" class="block"></div>
+      <div id="block_1" class="block"></div>
+      <div id="block_2" class="block"></div>
+      <div id="block_3" class="block"></div>
+      <div id="block_4" class="block"></div>
+      <div id="block_5" class="block"></div>
+      <div id="block_6" class="block"></div>
+      <div id="block_7" class="block"></div>
+      <div id="block_8" class="block"></div>
+    </div>
+    <h2 id="winner"></h2>
+    <button onclick="reset_board()">RESET BOARD</button>
+   </div> 
   </div>
   <script src="js/scripts.js"></script>
 </body>

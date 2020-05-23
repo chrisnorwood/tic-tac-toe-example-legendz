@@ -23,10 +23,10 @@ function getPlayerChoice() {
     let i = 0
     while(i<9) {
         if(i % 2 == 0) {
-            gameBoard2.insertPlayerChoice(prompt("Choose X"),prompt("Choose Y"),"X")
+            gameBoard2.insertPlayerChoice(0,1,"X")
             gameBoard2.printGameBoard()
         } else {
-            gameBoard2.insertPlayerChoice(prompt("Choose X"),prompt("Choose Y"),"O")
+            gameBoard2.insertPlayerChoice(0,2,"O")
             gameBoard2.printGameBoard()
         }
         i++;
