@@ -1,38 +1,73 @@
-//let gameBoard = [
-    //['O','O','O'],
-    //['X','X','X'],
-    //['O','O','O']
-//]
-
 const gameBoardFactory = () => {
+    let _x = 0
     this._gameBoard = [
-        ['','',''],
-        ['','',''],
-        ['','','']
+        [''],[''],[''],
+        [''],[''],[''],
+        [''],[''],['']
     ]
-    const printGameBoard = () => console.log(_gameBoard)
-    let insertPlayerChoice = (x,y,z) => _gameBoard[x][y] = z
+    let _userChoosenPiece = ""
+    let _userAIPiece = ""
 
-    return {printGameBoard, insertPlayerChoice}
-}
-
-const gameBoard2 = gameBoardFactory()
-
-//gameBoard2.printGameBoard()
-function getPlayerChoice() {
-    let i = 0
-    while(i<9) {
-        if(i % 2 == 0) {
-            gameBoard2.insertPlayerChoice(0,1,"X")
-            gameBoard2.printGameBoard()
-        } else {
-            gameBoard2.insertPlayerChoice(0,2,"O")
-            gameBoard2.printGameBoard()
-        }
-        i++;
+    const _showGameBoard = () => {
+        let playArea = document.getElementById("playArea")
+        let choosePiece = document.getElementById("choosePiece")
+        playArea.style.display = "grid"
+        choosePiece.style.display = "none"
+        
     }
-    //gameBoard2.insertPlayerChoice(0,0,"X")
-    //gameBoard2.printGameBoard()
+
+    const playerPiece = (clicked) => {
+        _userChoosenPiece = clicked
+        console.log(_userChoosenPiece)
+        _showGameBoard()
+    }
+
+    const printGameBoard = () =>  _gameBoard.forEach((gameBoardPiece) => {
+        document.getElementById("block_"+_x).innerHTML = gameBoardPiece
+        _x++
+    },_x = 0)
+    
+    const resetGameBoard = () => {
+        let playArea = document.getElementById("playArea")
+        let choosePiece = document.getElementById("choosePiece")
+        playArea.style.display = "none"
+        choosePiece.style.display = "flex"
+        _gameBoard = [
+            [''],[''],[''],
+            [''],[''],[''],
+            [''],[''],['']
+        ]
+    }
+
+    
+    let insertPlayerChoice = (x) => _gameBoard[x] = _userChoosenPiece
+
+    return {printGameBoard, insertPlayerChoice, resetGameBoard,playerPiece}
 }
-getPlayerChoice()
-//gameBoard2.printGameBoard()
+
+const intializeGameBoard = gameBoardFactory()
+
+function sendUserChoiceToFactory(e) {
+    let storeE = e.id
+    // returns the value of the dom element
+    let clicked = true
+    let getValue = document.getElementById(storeE).getAttributeNode("value").value
+    if(clicked) {
+        clicked = false
+        intializeGameBoard.insertPlayerChoice(getValue)
+        //intializeGameBoard.insertPlayerChoice(Math.floor((Math.random() * 9) ))
+        intializeGameBoard.printGameBoard()
+    }
+    
+}
+function sendUserPieceToFactory(e) {
+    let storeUserPieceID = e.id
+    intializeGameBoard.playerPiece(storeUserPieceID)
+}
+
+function callResetBoard() {
+    intializeGameBoard.resetGameBoard()
+    intializeGameBoard.printGameBoard()
+}
+
+intializeGameBoard.resetGameBoard()

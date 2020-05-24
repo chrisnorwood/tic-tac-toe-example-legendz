@@ -5,6 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
   }
 
+
   .container {
     min-height: 100vh;
     display: flex;
@@ -58,7 +59,7 @@
     background: #ff3a3a;
   }
 
-  #block_0,
+#block_0,
 #block_1,
 #block_2 {
   border-top: none;
@@ -80,4 +81,9 @@
 #block_5,
 #block_8 {
   border-right: none;
+}
+
+.choose-piece {
+    display: none;
+    
 }
